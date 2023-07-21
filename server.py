@@ -1,11 +1,12 @@
-from flask import Flask,request,jsonify
+from flask import Flask,request,jsonify,make_response
 
 app = Flask(__name__)
 
 
 @app.route("/calculator/greeting", methods=['GET'])
 def greeting():
-    return "hello world!"
+    response = make_response('Hello world!')
+    return response
 
 @app.route("/calculator/add", methods=['POST'])
 def add():
