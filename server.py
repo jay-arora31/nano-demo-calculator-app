@@ -1,33 +1,28 @@
-from flask import Flask, jsonify, request
-import requests
+from flask import Flask, request
+import json
+
 app = Flask(__name__)
 
 
 @app.route("/calculator/greeting", methods=['GET'])
 def greeting():
-    return jsonify({"message":"Hello World!"})
+    return "Hello world!"
 
 @app.route("/calculator/add", methods=['POST'])
 def add():
-    data = request.get_json()
-    if 'first' not in data or 'second' not in data:
-        return jsonify({'error': 'Both number1 and number2 are required.'}), 400
+    data = json.loads(request.data)
     number1 = data['first']
     number2 = data['second']
     result = number1 + number2
-
-    return jsonify({'result': result}),200
+    return result
 
 @app.route("/calculator/subtract", methods=['POST'])
 def subtract():
-    data = request.get_json()
-    if 'first' not in data or 'second' not in data:
-        return jsonify({'error': 'Both number1 and number2 are required.'}), 400
+    data = json.loads(request.data)
     number1 = data['first']
     number2 = data['second']
     result = number1 - number2
-
-    return jsonify({'result': result}),200
+    return result
 
 
 if __name__ == '__main__':
