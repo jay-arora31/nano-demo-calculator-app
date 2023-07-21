@@ -16,7 +16,7 @@ def add():
     number2 = data['second']
     result = number1 + number2
 
-    return jsonify({'result': result})
+    return jsonify({'result': result}),200
 
 @app.route("/calculator/subtract", methods=['POST'])
 def subtract():
@@ -27,7 +27,7 @@ def subtract():
     number2 = data['second']
     result = number1 - number2
 
-    return jsonify({'result': result})
+    return jsonify({'result': result}),200
 
 
 if __name__ == '__main__':
